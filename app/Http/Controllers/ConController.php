@@ -16,7 +16,7 @@ class ConController extends Controller
         $record = new Record();
 
         $record->recordText = $text;
-        $record->save();
+        //$record->save();
 
         return view('input');
     }
