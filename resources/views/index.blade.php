@@ -27,7 +27,7 @@
       <div class="col-md-6">
         <textarea class="form-control" rows="4" id="input_textarea"></textarea>
         <br />
-        <button class="btn btn-default" type="submit" style="float: right;" id="submit">Button</button>
+        <button class="btn btn-default" type="submit" style="float: right;" id="submit" onclick="send()">Button</button>
 
         <br />
         <br />
@@ -50,16 +50,16 @@
     <!-- <script src="js/jquery.js"></script>
     Include all compiled plugins (below), or include individual files as needed
     <script src="js/bootstrap.js"></script> -->
-    <script src="config/config.js"></script>
+    <!-- <script src="config/config.js"></script> -->
 
     <script type="text/javascript">
 
-    getData();
+    	getData();
 
     	function getData(){
     		var url = "http://" + window.location.host + "/outputInterface";
     		$.get(url, function(data){
-    			console.log(data);
+    			showList(data.posts);
     		});
     	}
 
@@ -67,7 +67,7 @@
     		var content = "";
     		var i = 0;
     		for(i=0; i<list.length; i++){
-    			content += getContent(list[i]);
+    			content += getContent(list[i].recordText);
     		}
     		$("#main_content").html(content);
     	}
@@ -82,6 +82,24 @@
 				</div>
     		`;	
     		return content;
+    	}
+
+    	function send(){
+    		var str = $("#input_textarea").val();
+    		var data = {
+    			inputText: str
+    		};
+    		var url = 'http://' + window.location.host + '/inputHandel';
+    		$.ajax({
+    			url:url,
+    			type: 'post',
+    			data: data,
+
+    			success: function(){
+    				getData();
+    				alert('send success');
+    			}
+    		});
     	}
     </script>
   </body>
