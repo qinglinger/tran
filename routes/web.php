@@ -43,9 +43,7 @@ Route::get('/outputInterface', "ConController@outputInterface");
 Route::get('/', "ConController@output");
 
 
+Route::get('/index', function(){
 
-
-//Andre
-Route::get('/index', function (){
-    return view('index');
+	return view('index');
 });
