@@ -21,6 +21,7 @@
             </tr>
         @endforeach
         </tbody>
+        {!! $posts->links() !!}
     </table>
 
 @endsection

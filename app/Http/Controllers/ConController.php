@@ -22,7 +22,7 @@ class ConController extends Controller
     }
 
     public function outputInterface(Request $request){
-        $query = DB::table('record')->get();
+        $query = DB::table('record')->orderBy('updated_at', 'DESC')->get();
 
         $data = [
             "posts" => $query
@@ -31,12 +31,23 @@ class ConController extends Controller
 //        return view('output', $data);
     }
 
+//    public function output(Request $request){
+//        $query = DB::table('record')->get();
+//
+//        $data = [
+//            "posts" => $query
+//        ];
+//        return $data;
+//    }
+
+
     public function output(Request $request){
-        $url = "http://";
-        $url .= $_SERVER['HTTP_HOST'];
-        $url .= "/outputInterface";
-        return $url;
-//        $content = file_get_contents($url);
-        return $content;
+        $query = DB::table('record')->paginate(2);
+
+        $data = [
+            "posts" => $query
+        ];
+//        return $data;
+        return view('output', $data);
     }
 }
