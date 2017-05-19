@@ -39,6 +39,7 @@ Route::get('/in', function () {
 });
 
 Route::post('/inputHandel', "ConController@input");
+Route::get('/outputInterface', "ConController@outputInterface");
 Route::get('/', "ConController@output");
 
 
