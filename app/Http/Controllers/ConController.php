@@ -21,13 +21,22 @@ class ConController extends Controller
         return view('input');
     }
 
-    public function output(Request $request){
+    public function outputInterface(Request $request){
         $query = DB::table('record')->get();
 
         $data = [
             "posts" => $query
         ];
+        return $data;
+//        return view('output', $data);
+    }
 
-        return view('output', $data);
+    public function output(Request $request){
+        $url = "http://";
+        $url .= $_SERVER['HTTP_HOST'];
+        $url .= "/outputInterface";
+        return $url;
+//        $content = file_get_contents($url);
+        return $content;
     }
 }

@@ -39,4 +39,13 @@ Route::get('/in', function () {
 });
 
 Route::post('/inputHandel', "ConController@input");
+Route::get('/outputInterface', "ConController@outputInterface");
 Route::get('/', "ConController@output");
+
+
+
+
+//Andre
+Route::get('/index', function (){
+    return view('index');
+});
