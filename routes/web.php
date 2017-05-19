@@ -40,3 +40,9 @@ Route::get('/in', function () {
 
 Route::post('/inputHandel', "ConController@input");
 Route::get('/', "ConController@output");
+
+
+Route::get('/index', function(){
+
+	return view('index');
+});
