@@ -27,7 +27,7 @@
       <div class="col-md-6">
         <textarea class="form-control" rows="4" id="input_textarea"></textarea>
         <br />
-        <button class="btn btn-default" type="submit" style="float: right;" id="submit" onclick="send()">Button</button>
+        <button class="btn btn-default" type="submit" style="float: right;" id="submit" onclick="send()">发送</button>
 
         <br />
         <br />
@@ -98,6 +98,7 @@
     			success: function(){
     				getData();
     				alert('send success');
+    				$("#input_textarea").val("");//清空输入框文字
     			}
     		});
     	}
